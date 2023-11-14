@@ -101,18 +101,41 @@
 
                                 <!-- FORM ROW 2 -->
                                 <div class="row">
+                                    <div class="kilogram col-md">
+                                        <label class="form-label" for="weightValue">KİLO (kg)</label>
+                                        <input class="form-control" id="weightValue" name="kilogram"
+                                               placeholder="Örnek: 55" type="number">
+                                    </div>
+                                    <!-- Body Height Input -->
+                                    <div class="body-height col-md">
+                                        <label class="form-label" for="heightInput">BOY (cm)</label>
+                                        <input class="form-control" id="heightInput" name="boy"
+                                               placeholder="Örnek: 175" type="number">
+                                    </div>
+
+                                </div>
+                                <div class="form-row-separator"></div>
+                                <!-- NEXT BUTTON -->
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn btn-primary" onclick="toggleFormPart()" type="button">DEVAM
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-part-2" hidden>
+                                <!-- FORM ROW 3 -->
+                                <div class="row">
                                     <div class="herba-product col-md">
                                         <!-- Herbalife used? -->
                                         <span class="form-question">HERBALİFE ÜRÜNLERİ KULLANDINIZ MI?</span>
                                         <div class="form-check">
                                             <input class="form-check-input" id="flexRadioTrue"
-                                                   name="herbalifeKullanmisEvet"
+                                                   name="herbalifeKullanmis"
                                                    type="radio">
                                             <label class="form-check-label" for="flexRadioTrue">Evet</label>
                                         </div>
                                         <div class="form-check">
                                             <input checked class="form-check-input" id="flexRadioFalse"
-                                                   name="herbalifeKullanmisHayir"
+                                                   name="herbalifeKullanmis"
                                                    type="radio">
                                             <label class="form-check-label" for="flexRadioFalse">Hayır</label>
                                         </div>
@@ -149,29 +172,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row-separator"></div>
-                                <!-- NEXT BUTTON -->
-                                <div class="d-flex justify-content-center">
-                                    <button class="btn btn-primary" onclick="toggleFormPart()" type="button">DEVAM
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="form-part-2" hidden>
-                                <!-- FORM ROW 3 -->
-                                <div class="row">
-                                    <div class="kilogram col-md">
-                                        <label class="form-label" for="weightValue">KİLO (kg)</label>
-                                        <input class="form-control" id="weightValue" name="kilogram"
-                                               placeholder="Örnek: 55" type="number">
-                                    </div>
-                                    <!-- Body Height Input -->
-                                    <div class="body-height col-md">
-                                        <label class="form-label" for="heightInput">BOY (cm)</label>
-                                        <input class="form-control" id="heightInput" name="boy"
-                                               placeholder="Örnek: 175" type="number">
-                                    </div>
 
-                                </div>
                                 <div class="form-row-separator"></div>
                                 <!-- FORM ROW 4 - Combined row for Phone, Height, and Location -->
                                 <div class="row">
@@ -201,6 +202,7 @@
                                 </div>
                                 <!-- SEND BUTTON -->
                                 <div class="d-flex justify-content-center">
+                                    <div class="loading-spinner" hidden></div>
                                     <button class="btn btn-success" type="submit">GÖNDER</button>
                                 </div>
                             </div>
