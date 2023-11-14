@@ -14,7 +14,7 @@
         <div class="inner">
             <div class="bg">
                 <video autoplay class="video-bg" loop muted playsinline>
-                    <source src="https://github.com/alindaarslansu/form/raw/main/static/mountain.mp4" type="video/mp4">
+                    <source src="/static/mountain.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h2 class="section-heading first-header">DEĞİŞİME HAZIR MISIN?</h2>
@@ -28,7 +28,7 @@
         <div class="inner">
             <div class="bg">
                 <video autoplay class="video-bg" loop muted playsinline>
-                    <source src="https://github.com/alindaarslansu/form/raw/main/static/running.mp4" type="video/mp4">
+                    <source src="/static/running.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h2 class="section-heading">BAZEN İHTİYACIN OLAN TEK ŞEY BİR REHBERDİR</h2>
@@ -42,7 +42,7 @@
         <div class="inner">
             <div class="bg">
                 <video autoplay class="video-bg" loop muted playsinline>
-                    <source src="https://github.com/alindaarslansu/form/raw/main/static/runner.mp4" type="video/mp4">
+                    <source src="/static/runner.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h2 class="section-heading">İŞTE O REHBER BENİM</h2>
@@ -56,7 +56,7 @@
         <div class="inner">
             <div class="bg">
                 <video autoplay class="video-bg" loop muted playsinline>
-                    <source src="https://github.com/alindaarslansu/form/raw/main/static/pink.mp4" type="video/mp4">
+                    <source src="/static/pink.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h2 class="section-heading">NEYİ BEKLİYORUZ?</h2>
@@ -70,7 +70,7 @@
         <div class="inner">
             <div class="bg">
                 <video autoplay class="video-bg" loop muted playsinline>
-                    <source src="https://github.com/alindaarslansu/form/raw/main/static/bridge.mp4" type="video/mp4">
+                    <source src="/static/bridge.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h2 class="section-heading form-cta">FORMU DOLDUR VE İLETİŞİME GEÇ</h2>
@@ -78,120 +78,134 @@
                 <div class="container-md">
                     <form id="herbalifeForm" onsubmit="handleSubmit(event)">
                         <div class="form-input-group sorular" hidden>
-                            <!-- FORM ROW 1 -->
-                            <div class="row">
-                                <div class="names col-md">
-                                    <label class="form-label form-question" for="nameFormControlInput">İSİM ve
-                                        SOYİSİM</label>
-                                    <input class="form-control" id="nameFormControlInput" name="name">
-                                </div>
-                                <div class="email-address col-md">
-                                    <div class="row">
-                                        <div class="mb-3 col">
-                                            <label class="form-label form-question" for="nameFormControlInput">E-POSTA
-                                                ADRESİN</label>
-                                            <input class="form-control" id="exampleFormControlInput1"
-                                                   placeholder="isim@ornek.com" type="email" name="email">
-                                        </div>
+                            <div class="form-part-1">
+                                <!-- FORM ROW 1 -->
+                                <div class="row">
+                                    <div class="names col-md">
+                                        <label class="form-label form-question" for="nameFormControlInput">İSİM ve
+                                            SOYİSİM</label>
+                                        <input class="form-control" id="nameFormControlInput" name="name">
                                     </div>
-                                </div>
-                            </div>
-                            <div class="form-row-separator"></div>
-
-                            <!-- FORM ROW 2 -->
-                            <div class="row">
-                                <div class="herba-product col-md">
-                                    <!-- Herbalife used? -->
-                                    <span class="form-question">HERBALİFE ÜRÜNLERİ KULLANDINIZ MI?</span>
-                                    <div class="form-check">
-                                        <input class="form-check-input" id="flexRadioTrue" name="herbalifeKullanmisEvet"
-                                               type="radio">
-                                        <label class="form-check-label" for="flexRadioTrue">Evet</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input checked class="form-check-input" id="flexRadioFalse"
-                                               name="herbalifeKullanmisHayir"
-                                               type="radio">
-                                        <label class="form-check-label" for="flexRadioFalse">Hayır</label>
-                                    </div>
-                                </div>
-                                <div class="goals col-md">
-                                    <span class="form-question">Hedeflerin</span>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="flexKiloVer" type="checkbox"
-                                                       value="" name="kiloVer">
-                                                <label class="form-check-label" for="flexKiloVer">Kilo Vermek</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="flexKiloAl" type="checkbox"
-                                                       value="" name="kiloAl">
-                                                <label class="form-check-label" for="flexKiloAl">Kilo Almak</label>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="flexSaglik" type="checkbox"
-                                                       value="" name="saglikliBeslen">
-                                                <label class="form-check-label" for="flexSaglik">Sağlıklı
-                                                    Beslenme</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="flexCilt" type="checkbox" value="" name="ciltSagligi">
-                                                <label class="form-check-label" for="flexCilt">Cilt Sağlığı</label>
+                                    <div class="email-address col-md">
+                                        <div class="row">
+                                            <div class="mb-3 col">
+                                                <label class="form-label form-question" for="nameFormControlInput">E-POSTA
+                                                    ADRESİN</label>
+                                                <input class="form-control" id="exampleFormControlInput1"
+                                                       name="email" placeholder="isim@ornek.com" type="email">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row-separator"></div>
-                            <!-- FORM ROW 3 -->
-                            <div class="row">
-                                <div class="kilogram col-md">
-                                    <label class="form-label" for="weightValue">KİLO (kg)</label>
-                                    <input class="form-control" id="weightValue" placeholder="Örnek: 55" type="number" name="kilogram">
-                                </div>
-                                <!-- Body Height Input -->
-                                <div class="body-height col-md">
-                                    <label class="form-label" for="heightInput">BOY (cm)</label>
-                                    <input class="form-control" id="heightInput" placeholder="Örnek: 175" type="number" name="boy">
-                                </div>
+                                <div class="form-row-separator"></div>
 
+                                <!-- FORM ROW 2 -->
+                                <div class="row">
+                                    <div class="herba-product col-md">
+                                        <!-- Herbalife used? -->
+                                        <span class="form-question">HERBALİFE ÜRÜNLERİ KULLANDINIZ MI?</span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="flexRadioTrue"
+                                                   name="herbalifeKullanmisEvet"
+                                                   type="radio">
+                                            <label class="form-check-label" for="flexRadioTrue">Evet</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input checked class="form-check-input" id="flexRadioFalse"
+                                                   name="herbalifeKullanmisHayir"
+                                                   type="radio">
+                                            <label class="form-check-label" for="flexRadioFalse">Hayır</label>
+                                        </div>
+                                    </div>
+                                    <div class="goals col-md">
+                                        <span class="form-question">Hedeflerin</span>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" id="flexKiloVer" name="kiloVer"
+                                                           type="checkbox" value="">
+                                                    <label class="form-check-label" for="flexKiloVer">Kilo
+                                                        Vermek</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" id="flexKiloAl" name="kiloAl"
+                                                           type="checkbox" value="">
+                                                    <label class="form-check-label" for="flexKiloAl">Kilo Almak</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" id="flexSaglik" name="saglikliBeslen"
+                                                           type="checkbox" value="">
+                                                    <label class="form-check-label" for="flexSaglik">Sağlıklı
+                                                        Beslenme</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" id="flexCilt" name="ciltSagligi"
+                                                           type="checkbox" value="">
+                                                    <label class="form-check-label" for="flexCilt">Cilt Sağlığı</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row-separator"></div>
+                                <!-- NEXT BUTTON -->
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn btn-primary" onclick="toggleFormPart()" type="button">DEVAM
+                                    </button>
+                                </div>
                             </div>
-                            <div class="form-row-separator"></div>
-                            <!-- FORM ROW 4 - Combined row for Phone, Height, and Location -->
-                            <div class="row">
-                                <!-- Mobile Phone Input -->
-                                <div class="phone-number col-md-4">
-                                    <label class="form-label" for="phoneInput">CEP TELEFONU</label>
-                                    <input class="form-control" id="phoneInput" placeholder="+90" type="tel" name="phone">
+                            <div class="form-part-2" hidden>
+                                <!-- FORM ROW 3 -->
+                                <div class="row">
+                                    <div class="kilogram col-md">
+                                        <label class="form-label" for="weightValue">KİLO (kg)</label>
+                                        <input class="form-control" id="weightValue" name="kilogram"
+                                               placeholder="Örnek: 55" type="number">
+                                    </div>
+                                    <!-- Body Height Input -->
+                                    <div class="body-height col-md">
+                                        <label class="form-label" for="heightInput">BOY (cm)</label>
+                                        <input class="form-control" id="heightInput" name="boy"
+                                               placeholder="Örnek: 175" type="number">
+                                    </div>
+
                                 </div>
-                                <div class="dob col-md">
-                                    <label class="form-label" for="dobInput">DOĞUM TARİHİ</label>
-                                    <input class="form-control" id="dobInput" type="date" name="dogumTarihi">
+                                <div class="form-row-separator"></div>
+                                <!-- FORM ROW 4 - Combined row for Phone, Height, and Location -->
+                                <div class="row">
+                                    <!-- Mobile Phone Input -->
+                                    <div class="phone-number col-md-4">
+                                        <label class="form-label" for="phoneInput">CEP TELEFONU</label>
+                                        <input class="form-control" id="phoneInput" name="phone" placeholder="+90"
+                                               type="tel">
+                                    </div>
+                                    <div class="dob col-md">
+                                        <label class="form-label" for="dobInput">DOĞUM TARİHİ</label>
+                                        <input class="form-control" id="dobInput" name="dogumTarihi" type="date">
+                                    </div>
+                                    <!-- Location Picker -->
+                                    <div class="location-picker col-md-4">
+                                        <label class="form-label" for="locationSelect">KONUM</label>
+                                        <select class="form-select" id="locationSelect">
+                                            <option selected>Seçiniz</option>
+                                            <option value="Ankara">Ankara</option>
+                                            <option value="İstanbul">İstanbul</option>
+                                            <option value="İzmir">İzmir</option>
+                                            <option value="Bodrum">Muğla - Bodrum</option>
+                                            <option value="Diger">Diğer</option>
+                                            <!-- Add more options as needed -->
+                                        </select>
+                                    </div>
                                 </div>
+                                <!-- SEND BUTTON -->
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn btn-success" type="submit">GÖNDER</button>
+                                </div>
+                            </div>
 
 
-                                <!-- Location Picker -->
-                                <div class="location-picker col-md-4">
-                                    <label class="form-label" for="locationSelect">KONUM</label>
-                                    <select class="form-select" id="locationSelect">
-                                        <option selected>Seçiniz</option>
-                                        <option value="Ankara">Ankara</option>
-                                        <option value="İstanbul">İstanbul</option>
-                                        <option value="İzmir">İzmir</option>
-                                        <option value="Bodrum">Muğla - Bodrum</option>
-                                        <option value="Diger">Diğer</option>
-                                        <!-- Add more options as needed -->
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- SEND BUTTON -->
-                            <div class="d-flex justify-content-center">
-                                <button class="btn btn-success" type="submit">GÖNDER</button>
-                            </div>
                         </div> <!-- Closing div for form-input-group sorular -->
                     </form>
                 </div> <!-- Closing div for container-md -->
