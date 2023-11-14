@@ -127,6 +127,33 @@ Observer.create({
 
 gotoSection(0, 1);
 
+function toggleFormPart() {
+    const part1 = document.querySelector('.form-part-1');
+    const part2 = document.querySelector('.form-part-2');
+
+    // Animate the first part out
+    gsap.to(part1, {
+        duration: 0.5,
+        opacity: 0,
+        y: -50,
+        onComplete: () => {
+            part1.setAttribute('hidden', true);
+
+            // Reset part1's style for when it's shown again
+            gsap.set(part1, { opacity: 1, y: 0 });
+
+            // Show and animate the second part in
+            part2.removeAttribute('hidden');
+            gsap.from(part2, {
+                duration: 0.5,
+                opacity: 0,
+                y: 50
+            });
+        }
+    });
+}
+
+
 function handleSubmit(event) {
   event.preventDefault();
   const form = document.getElementById('herbalifeForm');
