@@ -153,26 +153,104 @@ function toggleFormPart() {
     });
 }
 
+function showLoadingIndicator(show) {
+    const spinner = document.querySelector('.loading-spinner');
+    if (show) {
+        spinner.removeAttribute('hidden');
+    } else {
+        spinner.setAttribute('hidden', 'true');
+    }
+}
+
+
+function animateFormSuccess() {
+    console.log("animate success is called");
+    const formSection = document.querySelector('.fifth');
+    const formContent = formSection.querySelector('.bg'); // Assuming .bg contains the form elements
+    const outerElement = formSection.querySelector('.outer'); // Select the outer element
+    const checkMark = document.createElement('div');
+    checkMark.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 448 512" style="fill: #14db3c;"><path d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>';
+    checkMark.classList.add('check-mark');
+
+    // Animate form content out
+    gsap.to(formContent, {
+        duration: 1.5,
+        opacity: 0,
+        scale: 0.5,
+        onComplete: () => {
+            // Clear the form content
+            formContent.innerHTML = '';
+            outerElement.style.display = 'none';
+            // Append the checkmark to the form section, not the form content
+            formSection.appendChild(checkMark);
+            formSection.style.display = 'flex';
+            formSection.style.justifyContent = 'center';
+            formSection.style.alignItems = 'center';
+
+            // Animate checkmark in
+            gsap.fromTo(checkMark, {
+                scale: 0,
+                opacity: 0
+            }, {
+                duration: 1.5,
+                scale: 1,
+                opacity: 1,
+                ease: 'bounce.out'
+            });
+        }
+    });
+}
+
 
 function handleSubmit(event) {
-  event.preventDefault();
-  const form = document.getElementById('herbalifeForm');
-  const formData = new FormData(form);
-  const data = {};
-  for (const [key, value] of formData.entries()) {
-    data[key] = value;
-  }
-  console.log(JSON.stringify(data));
+    event.preventDefault();
+    const form = document.getElementById('herbalifeForm');
+    const formData = new FormData(form);
+    const data = {};
+    for (const [key, value] of formData.entries()) {
+        data[key] = value;
+    }
 
-  fetch('https://script.google.com/macros/s/AKfycbyoLtLKVfJUAf9GrAkj-PZwPO6KMMGSx4iPloZGP263nj0Hv5Y73d-oYtkYhwBBZqSG/exec', {
-    method: 'POST',
-    mode: 'no-cors', // This is important to avoid CORS issues
-    redirect: 'follow',
-    body: JSON.stringify(data),
-    headers: new Headers({
-      'Content-Type': 'application/json'
+    // Show loading indicator
+    showLoadingIndicator(true);
+
+    fetch('https://script.google.com/macros/s/AKfycbyoLtLKVfJUAf9GrAkj-PZwPO6KMMGSx4iPloZGP263nj0Hv5Y73d-oYtkYhwBBZqSG/exec', {
+        method: 'POST',
+        mode: 'no-cors', // This is important to avoid CORS issues
+        redirect: 'follow',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
     })
-  })
-  .then(response => console.log('Success!', response))
-  .catch(error => console.error('Error!', error.message));
+    .then(response => {
+        // Hide loading indicator
+        showLoadingIndicator(false);
+
+        if (response){
+            animateFormSuccess();
+        } else {
+            console.error("Submission failed");
+        }
+
+        // todo: actually implement this
+        // if (!response.ok && response.redirected) {
+        //     // cors limitations prevent us from getting the response status
+        //     animateFormSuccess();
+        // } else {
+        //     // console.error('Submission failed');
+        //     //
+        //     animateFormSuccess();
+        //
+        // }
+    })
+    .catch(error => {
+        console.error('Error!', error.message);
+        // Hide loading indicator
+        showLoadingIndicator(false);
+        // Handle submission error
+    });
 }
+
+
+
