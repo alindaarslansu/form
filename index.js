@@ -119,11 +119,12 @@ function gotoSection(index, direction) {
 Observer.create({
     type: "wheel,touch,pointer",
     wheelSpeed: -1,
-    onDown: () => !animating && gotoSection(currentIndex - 1, -1),
-    onUp: () => !animating && gotoSection(currentIndex + 1, 1),
+    onDown: () => !animating && !lastSectionReached && gotoSection(currentIndex - 1, -1),
+    onUp: () => !animating && !lastSectionReached && gotoSection(currentIndex + 1, 1),
     tolerance: 10,
     preventDefault: true
 });
+
 
 gotoSection(0, 1);
 
@@ -201,13 +202,17 @@ function animateFormSuccess() {
     });
 }
 
+function onCaptchaSuccess() {
+    document.querySelector('.g-recaptcha').style.display = 'none';
+}
+
 
 function handleSubmit(event) {
     event.preventDefault();
 
     const recaptchaResponse = grecaptcha.getResponse();
     if(recaptchaResponse.length === 0) {
-        // CAPTCHA not completed
+        // CAPTCHA not completed and request not timed out
         alert("Please complete the CAPTCHA");
         return; // Stop the form submission
     }
@@ -221,7 +226,7 @@ function handleSubmit(event) {
 
     const checkboxes = form.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
-        data[checkbox.name] = checkbox.checked; // This will be true or false
+        data[checkbox.name] = checkbox.checked;
     });
 
     // Show loading indicator
@@ -229,7 +234,7 @@ function handleSubmit(event) {
 
     fetch('https://script.google.com/macros/s/AKfycbyoLtLKVfJUAf9GrAkj-PZwPO6KMMGSx4iPloZGP263nj0Hv5Y73d-oYtkYhwBBZqSG/exec', {
         method: 'POST',
-        mode: 'no-cors', // This is important to avoid CORS issues
+        mode: 'no-cors',
         redirect: 'follow',
         body: JSON.stringify(data),
         headers: new Headers({
@@ -237,30 +242,47 @@ function handleSubmit(event) {
         })
     })
     .then(response => {
-        // Hide loading indicator
+        clearTimeout(requestTimeout); // Clear the timeout on successful response
         showLoadingIndicator(false);
 
-        if (response){
+        if (response || isRequestTimedOut){
             animateFormSuccess();
         } else {
             console.error("Submission failed");
         }
-
-        // todo: actually implement this
-        // if (!response.ok && response.redirected) {
-        //     // cors limitations prevent us from getting the response status
-        //     animateFormSuccess();
-        // } else {
-        //     // console.error('Submission failed');
-        //     //
-        //     animateFormSuccess();
-        //
-        // }
     })
     .catch(error => {
+        clearTimeout(requestTimeout); // Clear the timeout in case of an error
         console.error('Error!', error.message);
-        // Hide loading indicator
         showLoadingIndicator(false);
-        // Handle submission error
     });
 }
+
+
+
+function goBack() {
+    const part1 = document.querySelector('.form-part-1');
+    const part2 = document.querySelector('.form-part-2');
+
+    // Animate the second part out
+    gsap.to(part2, {
+        duration: 0.5,
+        opacity: 0,
+        y: 50,
+        onComplete: () => {
+            part2.setAttribute('hidden', true);
+
+            // Reset part2's style for when it's shown again
+            gsap.set(part2, { opacity: 1, y: 0 });
+
+            // Show and animate the first part in
+            part1.removeAttribute('hidden');
+            gsap.from(part1, {
+                duration: 0.5,
+                opacity: 0,
+                y: -50
+            });
+        }
+    });
+}
+
