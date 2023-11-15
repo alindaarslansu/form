@@ -135,7 +135,7 @@ section .bg h2 {
     font-size: 125%;
 }
 
-.btn-success {
+.btn-success, .btn-primary, .btn-warning {
   font-size: 24px;
   margin-top: 5px;
 }
