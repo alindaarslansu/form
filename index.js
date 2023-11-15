@@ -242,17 +242,15 @@ function handleSubmit(event) {
         })
     })
     .then(response => {
-        clearTimeout(requestTimeout); // Clear the timeout on successful response
         showLoadingIndicator(false);
 
-        if (response || isRequestTimedOut){
+        if (response){
             animateFormSuccess();
         } else {
             console.error("Submission failed");
         }
     })
     .catch(error => {
-        clearTimeout(requestTimeout); // Clear the timeout in case of an error
         console.error('Error!', error.message);
         showLoadingIndicator(false);
     });
