@@ -204,12 +204,25 @@ function animateFormSuccess() {
 
 function handleSubmit(event) {
     event.preventDefault();
+
+    const recaptchaResponse = grecaptcha.getResponse();
+    if(recaptchaResponse.length === 0) {
+        // CAPTCHA not completed
+        alert("Please complete the CAPTCHA");
+        return; // Stop the form submission
+    }
+
     const form = document.getElementById('herbalifeForm');
     const formData = new FormData(form);
     const data = {};
     for (const [key, value] of formData.entries()) {
         data[key] = value;
     }
+
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        data[checkbox.name] = checkbox.checked; // This will be true or false
+    });
 
     // Show loading indicator
     showLoadingIndicator(true);
@@ -251,6 +264,3 @@ function handleSubmit(event) {
         // Handle submission error
     });
 }
-
-
-
