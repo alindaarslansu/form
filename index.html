@@ -97,7 +97,8 @@
                                         </div>
                                     </div>
                                     <div class="names col-md">
-                                        <label class="form-label form-question" for="nameFormControlInput">İNSTAGRAM KULLANICI ADI</label>
+                                        <label class="form-label form-question" for="nameFormControlInput">İNSTAGRAM
+                                            KULLANICI ADI</label>
                                         <input class="form-control" id="instagramFormControlInput" name="instagram">
                                     </div>
                                 </div>
@@ -134,7 +135,6 @@
                                 </div>
                             </div>
                             <div class="form-part-2" hidden>
-                                <!-- FORM ROW 2 -->
                                 <div class="row">
                                     <div class="kilogram col-md">
                                         <label class="form-label" for="weightValue">KİLO (kg)</label>
@@ -149,6 +149,7 @@
                                     </div>
 
                                 </div>
+                                <!-- FORM ROW 3 -->
                                 <div class="row">
                                     <div class="herba-product col-md-4">
                                         <!-- Herbalife used? -->
@@ -232,10 +233,12 @@
 
                                 <div class="form-row-separator"></div>
                                 <!-- FORM ROW 4 - Combined row for Phone, Height, and Location -->
-<div class="g-recaptcha" data-sitekey="6Ld48g8pAAAAABJeOXaaCIPCva7JVJ4FhnWeZnTR"></div>
+                                <div class="g-recaptcha" data-sitekey="6Ld48g8pAAAAABJeOXaaCIPCva7JVJ4FhnWeZnTR" data-callback="onCaptchaSuccess"></div>
                                 <!-- SEND BUTTON -->
                                 <div class="d-flex justify-content-center">
                                     <div class="loading-spinner" hidden></div>
+                                    <button class="btn btn-warning me-2" onclick="goBack()" type="button">GERİ DÖN
+                                    </button>
 
                                     <button class="btn btn-success" type="submit">GÖNDER</button>
                                 </div>
@@ -259,6 +262,6 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="index.js"></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script async defer src="https://www.google.com/recaptcha/api.js"></script>
 </body>
 </html>
