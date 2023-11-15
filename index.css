@@ -198,3 +198,15 @@ h2 * {
     justify-content: center;
     align-items: center;
 }
+
+.centered-title {
+    display: block; /* Makes the span behave like a block element */
+    text-align: center; /* Center aligns the text */
+    width: 100%; /* Ensures the span takes the full width of its container */
+}
+
+@media (max-width: 1024px) {
+  .centered-title {
+    text-align: start; /* Center aligns the text */
+  }
+}
